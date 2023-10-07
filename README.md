@@ -13,13 +13,21 @@
 5.會員使用帳密登入後，才可瀏覽/修改個人資料/變更密碼，因此這些網頁必須進行存取控制保護，(請使用session記錄會員登入是否成功以及會員帳號)，以防非會員及其他會員修改資料。
 
 6.依資安原則，密碼不應以明碼儲存於資料庫，請依以下建議撰寫相關程式
-    (1)使用者初次設定或變更密碼時，將密碼以password_hash()函數產生雜湊值(60個字元)
-       $pwdHash=password_hash("yourPassord", PASSWORD_DEFAULT);
-       將雜湊值$pwdHash儲存於資料庫的資料表中。
-    (2)會員使用帳密登入時，使用password_verify()進行驗證，假設儲存於資料表中的雜湊值存於$pwdHash
-       password_verify('yourPassord', $pwdHash)驗證成功時會傳回true,失敗會傳回false。
-       password_hash()可參考https://www.php.net/manual/en/function.password-hash.php
-       password_verify()可參考https://www.php.net/manual/en/function.password-verify.php
-    (3)作業完成後，請匯出資料表至一個sql檔案，並撰寫一個readme.txt檔案，讓助教了解如何在MySQL資料庫建立相同之資料庫用戶帳號密碼以及同名之資料庫，以利作業批改。
+    
+(1)使用者初次設定或變更密碼時，將密碼以password_hash()函數產生雜湊值(60個字元)
+       
+    $pwdHash=password_hash("yourPassord", PASSWORD_DEFAULT);
+    
+    將雜湊值$pwdHash儲存於資料庫的資料表中。
+    
+(2)會員使用帳密登入時，使用password_verify()進行驗證，假設儲存於資料表中的雜湊值存於$pwdHash
+
+    password_verify('yourPassord', $pwdHash)驗證成功時會傳回true,失敗會傳回false。
+
+    password_hash()可參考https://www.php.net/manual/en/function.password-hash.php
+    
+    password_verify()可參考https://www.php.net/manual/en/function.password-verify.php
+ 
+(3)作業完成後，請匯出資料表至一個sql檔案，並撰寫一個readme.txt檔案，讓助教了解如何在MySQL資料庫建立相同之資料庫用戶帳號密碼以及同名之資料庫，以利作業批改。
 
 請於readme.txt中提供暑假期間聯絡資訊，以利批改作業發生問題時聯絡。
