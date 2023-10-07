@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Application Login</title>
+<style>
+    div {
+        margin: 30px auto;
+        background-color: #e0dcd9;
+        width: 700px;
+        border: solid #8f8681 5px;
+    }
+    table {
+        background-color: #faf6f3;
+        margin:50px auto;
+        width:400px;
+        height:400px;
+        border-radius: 20px;
+    }
+    th {
+        background-color: #8f8681;
+        text-align:center; 
+        padding: 2px 4px;
+        color: white;
+        border-radius: 8px;
+    } 
+    td {
+        color: black;
+        border-radius: 8px;
+        padding: 2px 4px;
+    }
+    caption {
+        margin:20px;
+        font-size:20pt;
+    }
+    .button {
+        -webkit-transition-duration: 0.4s; /* Safari */
+        transition-duration: 0.4s;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 10px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 12px;
+    }
+     
+    .button:hover {
+        background-color: #8f8681; /*藍色*/
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 10px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 12px;
+    }
+    .ip{
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 2px solid #8f8681;
+        border-radius: 12px;
+        box-sizing: border-box;
+    }
+</style>
+<script type="text/javascript">
+window.onload = init;
+function init() {
+document.getElementById("f1").onsubmit = check;
+}
+function check() {
+  p1 = document.f1.newpwd.value;
+  p2 = document.f1.cknewpwd.value;
+  p4 = document.f1.oldpwd.value;
+  if (p3 == "" || p1 =="" || p2 =="") {
+    alert("欄位不可空白，請重新輸入!");
+    document.f1.newpwd.focus();
+    return false;
+  }
+  if (p1 == p2)
+     return true;
+  else {
+    document.f1.newpwd.value = "";
+    document.f1.cknewpwd.value="";
+    alert("密碼不一致，請重新輸入!");
+    document.f1.pwd.focus();
+    return false;
+  }
+}
+</script>
+</head>
+<body>
+<form id="f1" name ="f1" action="changpw.php" method="post">
+    <div align="center">
+        <h1>修改密碼</h1>
+            <table cellpadding="5">
+                <tr><td align="right">原密碼: </td><td align="left"><input class="ip" type="password" name="oldpwd"></td></tr>
+                <tr><td align="right">新密碼: </td><td align="left"><input class="ip" type="password" name="newpwd"></td></tr>
+                <tr><td align="right">再次確認密碼: </td><td align="left"><input class="ip" type="password" name="cknewpwd"></td></tr>
+                <tr><td colspan="2" align="center">
+                <input class="button" type="button" value="返回" onclick="location.href='memberData.php'">
+                <input class="button" type="submit" value="修改密碼"><input class="button" type="reset"></td></tr>
+            </table>
+    </div>
+</form>
+</body>
+</html>
